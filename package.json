@@ -1,0 +1,22 @@
+{
+  "name": "schedviz-frontend-chartjs",
+  "version": "1.0.0",
+  "description": "A simple frontend that sends input data to the schedviz-parser-api and visualizes the parsed schedule. For the visualization-part, a stacked bar chart featuring chart.js is used right now.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andr3wid/schedviz-frontend-chartjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andr3wid/schedviz-frontend-chartjs/issues"
+  },
+  "homepage": "https://github.com/Andr3wid/schedviz-frontend-chartjs#readme",
+  "dependencies": {
+    "chart.js": "^2.8.0"
+  }
+}
