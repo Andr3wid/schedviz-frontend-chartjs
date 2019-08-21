@@ -4,8 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SchedViz Prototype</title>
+    <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pagestyle.css" />
 </head>
 <body>
-    
+    <div id="maincontent">
+        <div id="header">
+            <h2>Scheduling visualizer</h2>
+        </div>
+        
+        <canvas id="schedule-board" width="400" height="200px"></canvas>
+
+        <div id="data-input">
+            <label for="input-type">Choose source data-type:</label><br>
+            <select name="input-type">
+                <option>CSV</option>
+                <option>JSON</option>
+                <option>XML</option>
+                <option>ASP (Answer Set Programming fact format)</option>
+            </select>
+
+            <br><br>
+
+            <label for="data-upload">Paste data</label><br>
+            <textarea name="data-upload"></textarea>
+            
+            <br><br>
+
+            <input type="button" value="Draw schedule" />
+        </div>
+    </div>
 </body>
+
+<script defer>
+    // Initialize schedule board
+    let ctx = document.getElementById('schedule-board').getContext('2d');
+
+    let data = []
+        
+        let chart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: [
+                    "LINE/A",
+                    "LINE/B",
+                    "LINE/E",
+                    "LINE/F" 
+                ],
+                datasets: [
+                    {
+                        label: "471G00001",
+                        data: [10,0,0,0],
+                        backgroundColor: ["red"],
+                        borderColor: ["red"],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "471G00002",
+                        data: [10,0,0,0],
+                        backgroundColor: ["blue"],
+                        borderColor: ["blue"],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "471G00003",
+                        data: [10,0,0,0],
+                        backgroundColor: ["green"],
+                        borderColor: ["green"],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "MAINTENANCE",
+                        data: [0,5,0,0],
+                        backgroundColor: ["grey", "grey", "grey", "grey"],
+                        borderColor: ["grey", "grey", "grey", "grey"],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "471G00001",
+                        data: [0,35,0,0],
+                        backgroundColor: ["red","red","red","red"],
+                        borderColor: ["red","red","red","red"],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "471G00001",
+                        data: [0,12,0,0],
+                        backgroundColor: ["blue","blue","blue","blue"],
+                        borderColor: ["blue","blue","blue","blue"],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    xAxes: [
+                        {
+                            stacked: true,
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            stacked: true
+                        }
+                    ]
+                }
+            }
+        });
+</script>
 </html>
